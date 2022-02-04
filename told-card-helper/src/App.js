@@ -1,22 +1,33 @@
+import React, { useState } from 'react';
 
-import WeatherInput from "./components/WeatherInput/WeatherInput";
-import {useState} from "react";
-function App() {
+import NewWeather from './components/NewExpense/NewWeather';
+import WeatherList from './components/Expenses/WeatherList';
 
-  const [weather, setWeather] = useState({});
+const DUMMY_EXPENSES = [
+    {
+        id: 'example',
+        runway: 31,
+        headwind: 5,
+        date: new Date(2020, 7, 14),
+        altimeter: 29.02
+    },
+];
 
-  const onAddWeatherHandler = (weather) => {
-    setWeather((prevWeather) => {
-      return [weather, ...prevWeather];
-    });
-  };
+const App = () => {
+    const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-  return (
-      <div>
-        <WeatherInput onSaveWeather={onAddWeatherHandler} />
-      </div>
-  );
-}
+    const addExpenseHandler = (expense) => {
+        setExpenses((prevExpenses) => {
+            return [expense, ...prevExpenses];
+        });
+    };
+    return (
+        <div>
+            <NewWeather onAddExpense={addExpenseHandler} />
+            <WeatherList items={expenses} />
+        </div>
+    );
+};
 
 export default App;
 
