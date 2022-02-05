@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-import NewWeather from './components/NewExpense/NewWeather';
-import WeatherList from './components/Expenses/WeatherList';
+import NewWeather from './components/NewWeather/NewWeather';
+import WeatherList from './components/Weather/WeatherList';
+import TopBar from "./components/TopBar/TopBar";
+import PressureAltContext from "./components/Context/PressureAltContext";
 
 const DUMMY_EXPENSES = [
     {
         id: 'example',
         runway: 31,
         headwind: 5,
-        date: new Date(2020, 7, 14),
-        altimeter: 29.02
+        altimeter: 29.02,
+        fieldElevation: 958,
+        pressureAltitude: 1009.30,
     },
 ];
 
@@ -22,10 +25,11 @@ const App = () => {
         });
     };
     return (
-        <div>
-            <NewWeather onAddExpense={addExpenseHandler} />
-            <WeatherList items={expenses} />
-        </div>
+        <>
+            <TopBar/>
+                <NewWeather onAddExpense={addExpenseHandler}/>
+                <WeatherList items={expenses}/>
+        </>
     );
 };
 

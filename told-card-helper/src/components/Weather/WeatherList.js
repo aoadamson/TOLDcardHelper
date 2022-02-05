@@ -3,7 +3,6 @@ import Card from '../UI/Card';
 import './weatherList.css';
 
 const WeatherList = (props) => {
-
     return (
         <div>
             <Card className='expenses'>
@@ -12,8 +11,9 @@ const WeatherList = (props) => {
                         key={expense.id}
                         runway={expense.runway}
                         headwind={expense.headwind}
-                        date={expense.date}
                         altimeter={expense.altimeter}
+                        fieldElevation={expense.fieldElevation}
+                        pressureAltitude={expense.pressureAltitude}
                     />
                 ))}
             </Card>

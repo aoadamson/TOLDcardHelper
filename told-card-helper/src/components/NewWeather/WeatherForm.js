@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 import './WeatherForm.css';
+import PressureAltitude from "./PressureAltitude";
 
 const WeatherForm = (props) => {
     const [enteredRunway, setEnteredRunway] = useState('');
     const [enterHeadwind, setEnterHeadwind] = useState('');
-    const [enteredDate, setEnteredDate] = useState('');
     const [enteredAltimeter, setEnteredAltimeter] = useState('');
-
+    const [enteredFieldElevation, setEnteredFieldElevation] = useState('');
 
     const runwayChangeHandler = (event) => {
         setEnteredRunway(event.target.value);
@@ -19,12 +19,12 @@ const WeatherForm = (props) => {
 
     };
 
-    const dateChangeHandler = (event) => {
-        setEnteredDate(event.target.value);
-    };
-
     const altimeterChangeHandler = (event) => {
         setEnteredAltimeter(event.target.value);
+
+    };
+    const fieldElevationChangeHandler = (event) => {
+        setEnteredFieldElevation(event.target.value);
 
     };
 
@@ -35,15 +35,16 @@ const WeatherForm = (props) => {
         const expenseData = {
             runway: enteredRunway,
             headwind: enterHeadwind,
-            date: new Date(enteredDate),
             altimeter: enteredAltimeter,
+            fieldElevation: enteredFieldElevation,
+            pressureAltitude: PressureAltitude(enteredFieldElevation,enteredAltimeter)
         };
 
         props.onSaveExpenseData(expenseData);
         setEnteredRunway('');
         setEnterHeadwind('');
-        setEnteredDate('');
         setEnteredAltimeter('');
+        setEnteredFieldElevation('');
     };
 
     return (
@@ -66,19 +67,19 @@ const WeatherForm = (props) => {
                     />
                 </div>
                 <div className='new-expense__control'>
-                    <label>Date</label>
-                    <input
-                        type='date'
-                        value={enteredDate}
-                        onChange={dateChangeHandler}
-                    />
-                </div>
-                <div className='new-expense__control'>
                     <label>Altimeter</label>
                     <input
                         type='number'
                         value={enteredAltimeter}
                         onChange={altimeterChangeHandler}
+                    />
+                </div>
+                <div className='new-expense__control'>
+                    <label>Field Elevation</label>
+                    <input
+                        type='number'
+                        value={enteredFieldElevation}
+                        onChange={fieldElevationChangeHandler}
                     />
                 </div>
             </div>

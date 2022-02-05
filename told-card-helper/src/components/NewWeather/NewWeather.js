@@ -9,6 +9,7 @@ const NewWeather = (props) => {
             ...enteredExpenseData,
             id: Math.random().toString()
         };
+
         props.onAddExpense(expenseData);
     };
 

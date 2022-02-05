@@ -1,0 +1,8 @@
+.told-title__controls {
+    font-style: initial;
+    align-self: self-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background-color: goldenrod;
+}
