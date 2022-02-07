@@ -9,10 +9,13 @@ const DUMMY_EXPENSES = [
     {
         id: 'example',
         runway: 31,
+        windDirection: 320,
         headwind: 5,
         altimeter: 29.02,
         fieldElevation: 958,
         pressureAltitude: 1009.30,
+        headwindComponent: 4,
+        crosswindComponent: 3,
     },
 ];
 

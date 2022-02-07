@@ -10,10 +10,14 @@ const WeatherList = (props) => {
                     <WeatherItem
                         key={expense.id}
                         runway={expense.runway}
+                        windDirection={expense.windDirection}
                         headwind={expense.headwind}
                         altimeter={expense.altimeter}
                         fieldElevation={expense.fieldElevation}
                         pressureAltitude={expense.pressureAltitude}
+                        headwindComponent={expense.headwindComponent}
+                        crosswindComponent ={expense.crosswindComponent}
+                        takeOff={expense.takeOff}
                     />
                 ))}
             </Card>
