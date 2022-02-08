@@ -6,13 +6,13 @@
     text-align: center;
 }
 
-.new-expense__control label {
+.new-weather__control label {
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
 }
 
-.new-expense__control input {
+.new-weather__control input {
     font: inherit;
     padding: 0.5rem;
     border-radius: 6px;
@@ -21,6 +21,6 @@
     max-width: 100%;
 }
 
-.new-expense__actions {
+.new-weather__actions {
     text-align: center;
 }

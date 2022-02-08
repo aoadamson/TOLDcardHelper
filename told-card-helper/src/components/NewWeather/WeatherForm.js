@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
-
+import {useDispatch} from "react-redux";
 import './WeatherForm.css';
 import PressureAltitude from "./Calculations/PressureAltitude";
 import WindComponent from "./Calculations/WindComponents";
 import TakeOff from "./Calculations/TakeOff";
 import pressureAltitude from "./Calculations/PressureAltitude";
+import {toldCardAmountActions} from "../../store";
 
 const WeatherForm = (props) => {
+    const dispatch = useDispatch();
     const [enteredRunway, setEnteredRunway] = useState('');
     const [enteredWindDirection, setEnteredWindDirection] = useState('');
     const [enterHeadwind, setEnterHeadwind] = useState('');
@@ -43,7 +45,7 @@ const WeatherForm = (props) => {
         event.preventDefault();
         const windComponent = WindComponent(enteredRunway, enteredWindDirection, enterHeadwind)
         const pressureAltitude = PressureAltitude(enteredFieldElevation, enteredAltimeter)
-        const expenseData = {
+        const weatherData = {
             runway: enteredRunway,
             headwind: enterHeadwind,
             windDirection: enteredWindDirection,
@@ -55,7 +57,9 @@ const WeatherForm = (props) => {
             takeOff: TakeOff(pressureAltitude, windComponent.headwindComp, 30, false, 2000)
         };
 
-        props.onSaveExpenseData(expenseData);
+
+        props.onSaveWeatherData(weatherData);
+        dispatch(toldCardAmountActions.increment())
         setEnteredRunway('');
         setEnteredWindDirection('')
         setEnterHeadwind('');
@@ -65,8 +69,8 @@ const WeatherForm = (props) => {
 
     return (
         <form onSubmit={submitHandler}>
-            <div className='new-weather__controls'>
-                <div className='new-expense__control'>
+            <div>
+                <div className='new-weather__control'>
                     <label>Runway</label>
                     <input
                         type='number'
@@ -74,7 +78,7 @@ const WeatherForm = (props) => {
                         onChange={runwayChangeHandler}
                     />
                 </div>
-                <div className='new-expense__control'>
+                <div className='new-weather__control'>
                     <label>Wind Direction</label>
                     <input
                         type='number'
@@ -82,7 +86,7 @@ const WeatherForm = (props) => {
                         onChange={windDirectionChangeHandler}
                     />
                 </div>
-                <div className='new-expense__control'>
+                <div className='new-weather__control'>
                     <label>Headwind</label>
                     <input
                         type='number'
@@ -90,7 +94,7 @@ const WeatherForm = (props) => {
                         onChange={headwindChangeHandler}
                     />
                 </div>
-                <div className='new-expense__control'>
+                <div className='new-weather__control'>
                     <label>Altimeter</label>
                     <input
                         type='number'
@@ -98,7 +102,7 @@ const WeatherForm = (props) => {
                         onChange={altimeterChangeHandler}
                     />
                 </div>
-                <div className='new-expense__control'>
+                <div className='new-weather__control'>
                     <label>Field Elevation</label>
                     <input
                         type='number'
@@ -107,7 +111,7 @@ const WeatherForm = (props) => {
                     />
                 </div>
             </div>
-            <div className='new-expense__actions'>
+            <div className='new-weather__actions'>
                 <button type='submit'>Calculate Told</button>
             </div>
         </form>

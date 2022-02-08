@@ -5,19 +5,19 @@ import './weatherList.css';
 const WeatherList = (props) => {
     return (
         <div>
-            <Card className='expenses'>
-                {props.items.map((expense) => (
+            <Card className='tolds'>
+                {props.items.map((weather) => (
                     <WeatherItem
-                        key={expense.id}
-                        runway={expense.runway}
-                        windDirection={expense.windDirection}
-                        headwind={expense.headwind}
-                        altimeter={expense.altimeter}
-                        fieldElevation={expense.fieldElevation}
-                        pressureAltitude={expense.pressureAltitude}
-                        headwindComponent={expense.headwindComponent}
-                        crosswindComponent ={expense.crosswindComponent}
-                        takeOff={expense.takeOff}
+                        key={weather.id}
+                        runway={weather.runway}
+                        windDirection={weather.windDirection}
+                        headwind={weather.headwind}
+                        altimeter={weather.altimeter}
+                        fieldElevation={weather.fieldElevation}
+                        pressureAltitude={weather.pressureAltitude}
+                        headwindComponent={weather.headwindComponent}
+                        crosswindComponent ={weather.crosswindComponent}
+                        takeOff={weather.takeOff}
                     />
                 ))}
             </Card>

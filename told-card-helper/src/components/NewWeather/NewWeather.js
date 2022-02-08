@@ -4,18 +4,18 @@ import WeatherForm from './WeatherForm';
 import './NewWeather.css';
 
 const NewWeather = (props) => {
-    const saveExpenseDataHandler = (enteredExpenseData) => {
-        const expenseData = {
-            ...enteredExpenseData,
+    const saveWeatherDataHandler = (enteredWeatherData) => {
+        const weatherData = {
+            ...enteredWeatherData,
             id: Math.random().toString()
         };
 
-        props.onAddExpense(expenseData);
+        props.onAddWeather(weatherData);
     };
 
     return (
-        <div className='new-expense'>
-            <WeatherForm onSaveExpenseData={saveExpenseDataHandler} />
+        <div className='new-weather'>
+            <WeatherForm onSaveWeatherData={saveWeatherDataHandler} />
         </div>
     );
 };
