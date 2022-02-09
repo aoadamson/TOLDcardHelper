@@ -4,8 +4,8 @@ import './WeatherForm.css';
 import PressureAltitude from "./Calculations/PressureAltitude";
 import WindComponent from "./Calculations/WindComponents";
 import TakeOff from "./Calculations/TakeOff";
-import pressureAltitude from "./Calculations/PressureAltitude";
 import {toldCardAmountActions} from "../../store";
+import Landing from "./Calculations/Landing";
 
 const WeatherForm = (props) => {
     const dispatch = useDispatch();
@@ -45,6 +45,9 @@ const WeatherForm = (props) => {
         event.preventDefault();
         const windComponent = WindComponent(enteredRunway, enteredWindDirection, enterHeadwind)
         const pressureAltitude = PressureAltitude(enteredFieldElevation, enteredAltimeter)
+        const result_takeOff = TakeOff(pressureAltitude, windComponent.headwindComp, 30, false, 2000)
+        const result_landing = Landing(windComponent.headwindComp, false, pressureAltitude)
+        const resultMaxAborted = result_takeOff.result_no_obstacle + result_landing.result_no_obstacle +(((result_takeOff.result_no_obstacle + result_landing.result_no_obstacle)/100)*30)
         const weatherData = {
             runway: enteredRunway,
             headwind: enterHeadwind,
@@ -54,7 +57,11 @@ const WeatherForm = (props) => {
             pressureAltitude: pressureAltitude,
             headwindComponent: windComponent.headwindComp,
             crosswindComponent: windComponent.crosswindComp,
-            takeOff: TakeOff(pressureAltitude, windComponent.headwindComp, 30, false, 2000)
+            takeOff: result_takeOff.result_no_obstacle,
+            takeOff50ft: result_takeOff.result_obstacle_50ft,
+            landing: result_landing.result_no_obstacle,
+            landing50ft: result_landing.result_obstacle_50ft,
+            maxAborted: resultMaxAborted,
         };
 
 

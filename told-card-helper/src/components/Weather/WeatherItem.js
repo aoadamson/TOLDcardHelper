@@ -1,25 +1,26 @@
-import {useContext} from "react";
 
 import Card from '../UI/Card';
 import WeatherDate from "./WeatherDate";
 import './WeatherItem.css';
-import PressureAltitude from "../NewWeather/Calculations/PressureAltitude";
 
 const WeatherItem = (props) => {
-    // const pressure = useContext(PressureAltitude)
     return (
         <Card className='weather-item'>
             <WeatherDate/>
             <div className='weather-item__description'>
-                <h2>Runway: {props.runway}</h2>
-                <div className='weather-item__price'>wind direction{props.windDirection}</div>
-                <div className='weather-item__price'>crosswind{props.headwind} Knots</div>
+                <div className='weather-item__price'>Runway: {props.runway}</div>
+                <div className='weather-item__price'>wind direction: {props.windDirection}</div>
+                <div className='weather-item__price'>headwind: {props.headwind} Knots</div>
                 <div className='weather-item__price'>Altimeter: {props.altimeter}</div>
                 <div className='weather-item__price'>Field Elevation: {props.fieldElevation}</div>
                 <div className='weather-item__price'>Pressure: {props.pressureAltitude}</div>
                 <div className='weather-item__price'>headwind Comp: {props.headwindComponent}</div>
                 <div className='weather-item__price'>crosswind comp: {props.crosswindComponent}</div>
                 <div className='weather-item__price'>Take off: {props.takeOff}</div>
+                <div className='weather-item__price'>Take off 50ft: {props.takeOff50ft}</div>
+                <div className='weather-item__price'>Landing: {props.landing}</div>
+                <div className='weather-item__price'>Landing 50ft: {props.landing50ft}</div>
+                <div className='weather-item__price'>Max Aborted Takeoff: {props.maxAborted}</div>
             </div>
         </Card>
     );

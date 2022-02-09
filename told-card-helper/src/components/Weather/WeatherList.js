@@ -18,6 +18,10 @@ const WeatherList = (props) => {
                         headwindComponent={weather.headwindComponent}
                         crosswindComponent ={weather.crosswindComponent}
                         takeOff={weather.takeOff}
+                        takeOff50ft={weather.takeOff50ft}
+                        landing={weather.landing}
+                        landing50ft={weather.landing50ft}
+                        maxAborted={weather.maxAborted}
                     />
                 ))}
             </Card>
