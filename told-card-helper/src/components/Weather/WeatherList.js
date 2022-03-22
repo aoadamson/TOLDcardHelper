@@ -6,9 +6,11 @@ const WeatherList = (props) => {
     return (
         <div>
             <Card className='tolds'>
+                <h2 className={'told-title__controls'}>TOLD Card List</h2>
                 {props.items.map((weather) => (
                     <WeatherItem
                         key={weather.id}
+                        airport={weather.airport}
                         runway={weather.runway}
                         windDirection={weather.windDirection}
                         headwind={weather.headwind}
@@ -21,6 +23,7 @@ const WeatherList = (props) => {
                         takeOff50ft={weather.takeOff50ft}
                         landing={weather.landing}
                         landing50ft={weather.landing50ft}
+                        rateOfClimb={weather.rateOfClimb}
                         maxAborted={weather.maxAborted}
                     />
                 ))}

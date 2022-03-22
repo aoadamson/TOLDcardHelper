@@ -3,6 +3,14 @@
     background-color: rgb(31, 31, 31);
     margin: 2rem auto;
     width: 100rem;
-    height: 50rem;
+    height: fit-content;
     max-width: 95%;
+}
+.told-title__controls {
+    font-style: initial;
+    align-self: self-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background-color: silver;
 }

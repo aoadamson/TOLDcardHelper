@@ -1,16 +1,7 @@
 import {AGL_CHOICES, LANDING_DATA} from "../../POH/LandingData";
-
-const closest_not_going_over = (arr, num) => {
-    let sorted = arr.sort().reverse();
-    return sorted.filter(n => n <= num)[0]
-}
-const closest_not_going_under = (arr, num) => {
-    let sorted = arr.sort()
-    return sorted.filter(n => n >= num)[0]
-}
+import {closest_not_going_over, closest_not_going_under} from "./Utils";
 
 const landing_calc = (obstacle, min_alt, max_alt, pressureAltitude) => {
-    console.log(min_alt+1)
     const min = LANDING_DATA[obstacle][min_alt];
     return (((LANDING_DATA[obstacle][max_alt] - min) / (max_alt - min_alt)) * pressureAltitude) + min;
 }

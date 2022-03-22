@@ -1,22 +1,5 @@
 import {TAKE_OFF_CHART, HEADWINDS, AGL_CHOICES, TEMP_CORRECTION} from '../../POH/TakeOffData'
-
-const closest = (arr, num) => {
-    return arr.reduce((acc, val) => {
-        if (Math.abs(val - num) < Math.abs(acc)) {
-            return val - num;
-        } else {
-            return acc;
-        }
-    }, Infinity) + num;
-}
-const closest_not_going_over = (arr, num) => {
-    let sorted = arr.sort().reverse();
-    return sorted.filter(n => n <= num)[0]
-}
-const closest_not_going_under = (arr, num) => {
-    let sorted = arr.sort()
-    return sorted.filter(n => n >= num)[0]
-}
+import {closest, closest_not_going_over, closest_not_going_under} from "./Utils";
 
 const based_on_wind_min = (obstacle, closest_weight, min_head, max_head, max_alt) => {
     const max = TAKE_OFF_CHART[obstacle][closest_weight][max_alt][max_head];

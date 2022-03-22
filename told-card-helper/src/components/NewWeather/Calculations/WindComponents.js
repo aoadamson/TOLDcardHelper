@@ -1,10 +1,9 @@
 const WindComponent = (runway, windDirection, windSpeed) => {
-    let degreeDifference = Math.abs((runway *10 ) - windDirection)
-    if(degreeDifference> 90){
-        degreeDifference = degreeDifference - 90;
-    }
-    const crosswind = Math.round(windSpeed * Math.sin(degreeDifference * Math.PI / 180));
-    const headwind = Math.round(windSpeed * Math.cos(degreeDifference * Math.PI / 180));
+    let degreeDifference = 180 - Math.abs(Math.abs((runway * 10) - windDirection) - 180);
+    console.log(degreeDifference)
+    const crosswind = Math.round(Math.abs(windSpeed * Math.sin(degreeDifference)));
+    const headwind = Math.round(Math.abs(windSpeed * Math.cos(degreeDifference)));
+    console.log(headwind)
     return {
         headwindComp: headwind,
         crosswindComp: crosswind
